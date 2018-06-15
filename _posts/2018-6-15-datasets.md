@@ -15,4 +15,4 @@ The raw CSV input files have 31 columns - 30 floating point numbers followed by 
 
 The first 30 columns are easy enough, and the whole thing is simple using pandas (see Daniel Nouri's blog post). But the Datasets API requires us to write a native Tensorflow graph to do the processing. (OK an alternative would be just to translate the data file ahead of time into a native format.) Here is a solution, missing the scaling that Daniel has:
 
-https://gist.github.com/danlester/f7cdbc741cf06317ff3870c52bb3474a
+{% gist f7cdbc741cf06317ff3870c52bb3474a %}
