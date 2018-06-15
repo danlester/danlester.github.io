@@ -1,10 +1,8 @@
 ---
 layout: post
-title: First post
+title: Noughts and Crosses
 ---
 
-Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
+As a way to learn Tensorflow and Deep Neural Networks, I made a DNN  model to play Noughts and Crosses. It's interesting from a technical point of view, but ultimately is not the best way to solve the game... search would be a better algorithm, and if you do want to use DNNs, ideally you would use Reinforcement Learning techniques too. The game play model is probably the most reusable part.
 
-![_config.yml]({{ site.baseurl }}/images/config.png)
-
-The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
+A full writeup is here: [Noughts and Crosses](https://danlester.github.io/TensorFlow-NoughtsAndCrosses/)
