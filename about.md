@@ -4,12 +4,8 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
-
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
+I am an internet entrepreneur based in Cambridge UK. Career details are here: [http://danlester.com/about/]
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+github@danlester.com
