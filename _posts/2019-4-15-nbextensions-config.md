@@ -21,7 +21,7 @@ You'll find the `jupyter` command in one of your 'bin' folders, e.g. /usr/local/
  
  When you `pip install jupyter`, the setup.py file for the jupyter_notebook module automatically creates the script(s). Take a look at the `entry_points` section in [setup.py](https://github.com/jupyter/notebook/blob/master/setup.py):
  
-```
+```python
 entry_points = {
         'console_scripts': [
             'jupyter-notebook = notebook.notebookapp:main',
@@ -38,7 +38,7 @@ Something in the `setuptools` module (used by `setup.py` at install time) unders
 ## Jupyter Config files
 
 Run the command `jupyter --paths` and you'll see something like:
-```
+```shell
 config:
     /Users/dan/.jupyter
     /usr/local/etc/jupyter
@@ -67,14 +67,14 @@ Beyond installing the Python module of Jupyter Innotater, there are two main nbe
  
  If you're installing jupyter_innotater via pip (`pip install jupyter_innotater`), the install and enable steps should be carried out automatically (see later), but let's imagine your config has gone wrong and only the jupyter_innotater Python module has been installed correctly (i.e. exists in your `site-packages` folder) but the widget isn't working in the Notebook. Then you might run:
  
-```
+```shell
 jupyter nbextension enable --py --sys-prefix jupyter_innotater
 ```
 
 The --py argument means that the extension is available as a Python module (called jupyter_innotater in this case). And --sys-prefix means we want to enable at the sys-prefix config level (not user-specific).
 
 This command should make the following addition to /usr/local/etc/jupyter/nbconfig/notebook.json:
-```
+```json
 {
      "load_extensions": {
        "jupyter-innotater/extension": true
@@ -83,7 +83,7 @@ This command should make the following addition to /usr/local/etc/jupyter/nbconf
 ```
 which instructs the Notebook to load the relevant Javascript files etc when it runs, presuming this configuration isn't overridden at the user level. Maybe it is, in which case running `jupyter nbextension list` will show you:
 
-```
+```shell
 Known nbextensions:
   config dir: /Users/dan/.jupyter/nbconfig
     notebook section
@@ -103,7 +103,7 @@ The net result here is that Innotater will not be available in the Notebook. You
  The Python module jupyter_innotater might already be installed and available to Python, so if your notebook starts with `from jupyter_innotater import Innotater`, cell execution might seem to go smoothly, but the widget doesn't show later on when you try to instantiate it. In the Javascript console you might find the file /static/jupyter-innotater.js is unavailable.
  
  The following step would hopefully fix this:
- ```
+ ```shell
  jupyter nbextension install --sys-prefix --py jupyter_innotater
 ```
 
@@ -111,7 +111,7 @@ These arguments are the same as for 'enable', but instead of changing the config
 
 But how did the `jupyter nbextension install` command know which file(s) to copy? Simply by importing and running a function called `_jupyter_nbextension_paths` from the jupyter_innotater Python module. You can see it in the `__init__.py` file of the [jupyter_innotater Python module](https://github.com/ideonate/jupyter-innotater/blob/master/jupyter-innotater/jupyter_innotater/__init__.py):
 
-```
+```python
 def _jupyter_nbextension_paths():
        return [{
            'section': 'notebook',
@@ -131,7 +131,7 @@ So how do these install and enable steps happen automatically when you `pip inst
 
 Both steps are handled through setuptools when [setup.py](https://github.com/ideonate/jupyter-innotater/blob/master/jupyter-innotater/setup.py) is run at install time. And in both cases it is a simple matter of copying files. See the `data_files` section of setup.py:
 
-```
+```python
 data_files = [
        ('share/jupyter/nbextensions/jupyter-innotater', [
            'jupyter_innotater/static/extension.js',
@@ -151,7 +151,7 @@ The data_files section is understood by [setuptools (more details here)](https:/
 In the first entry above, the media files (crucially the js files) are asked to be copied to the relevant subfolder inside the sys-prefix level data folder (share/jupyter/nbextensions/jupyter-innotater). This is exactly what happens when we run the `jupyter nbextension install` command.
 
 In the second entry, a json file is copied to a subfolder of the sys-prefix level config folder. Let's look at the [enable_jupyter_innotater.json file](https://github.com/ideonate/jupyter-innotater/blob/master/jupyter-innotater/enable_jupyter_innotater.json) contents:
-```
+```json
 {
     "load_extensions": {
       "jupyter-innotater/extension": true
