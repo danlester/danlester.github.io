@@ -14,6 +14,10 @@ During my career in software and business, I have:
 
 Here are some companies and projects that I have created:
 
+## Jupyter Innotater
+
+[Innotater](https://github.com/ideonate/jupyter-innotater) is a tool for machine learning developers. Annotate data including image bounding boxes inline within your Jupyter notebook in Python. Innotater's flexible API allows easy selection of interactive controls to suit your datasets exactly.
+
 ## Google Apps Login for WordPress
 
 [Google Apps Login for WordPress](https://wp-glogin.com/) has grown into a suite of WordPress plugins allowing a company's websites or intranets to integrate deeply into Google Apps (now called G Suite).
