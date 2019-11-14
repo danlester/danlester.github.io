@@ -8,12 +8,17 @@ Hello! I am an internet entrepreneur based in Cambridge, UK.
 
 During my career in software and business, I have:
 
-*   Co-founded, and acted as CTO and COO, for both an agency and a venture-backed startup business.
+*   Co-founded, and acted as CTO and COO, for four startup businesses including one venture-backed.
 *   Worked for small and large companies (including Citi) developing desktop and networked applications.
 *   Built independent games and web projects.
 
 Here are some companies and projects that I have created:
 
+## ContainDS
+
+[ContainDS](https://containds.com/) is a tool for data scientists to easily run Jupyter Lab or Notebooks through virtual 
+environments locally on your Windows or Mac computer.
+                                                  
 ## Jupyter Innotater
 
 [Innotater](https://github.com/ideonate/jupyter-innotater) is a tool for machine learning developers. Annotate data including image bounding boxes inline within your Jupyter notebook in Python. Innotater's flexible API allows easy selection of interactive controls to suit your datasets exactly.
